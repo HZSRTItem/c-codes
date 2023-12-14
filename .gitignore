@@ -1,0 +1,9 @@
+/.vs/
+/x64/
+
+CA/*
+!CA/*.h
+!CA/*.c
+!CA/*.cpp
+
+CA.sln
