@@ -17,6 +17,7 @@
 #include "srtdict.h"
 #include "clistcode.h"
 #include "srtrun.h"
+#include "c_run_openfile.h"
 
 int main(int argc, char* argv[])
 {
@@ -130,9 +131,10 @@ int main(int argc, char* argv[])
 	//printf("test3: %s\n", dictstr.get(&dictstr, "test3"));
 	//dictstr.free(&dictstr);
 
-	return main_sample_select(argc, argv);
+	//return main_sample_select(argc, argv);
 	//return clistcode_main(argc, argv);
 	//return main_calres(argc, argv);
+	return cr_run_openfile_main(argc, argv);
 }
 
 

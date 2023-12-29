@@ -125,7 +125,7 @@ char* strtrim(char* _str_strim)
 
 	if (len == 0)
 	{
-		return NULL;
+		return _str_strim;
 	}
 
 	char* s0 = _str_strim;
@@ -243,6 +243,7 @@ char* getchars_file(FILE* fr, int (*endread)(char* _str))
 	}
 
 	SRTCharList_free(&charlist);
+	ret_str[n] = '\0';
 
 	return ret_str;
 }
@@ -299,10 +300,25 @@ char* readTextAll(char _filename[_MAX_PATH])
 	}
 
 	char* _data = getchars_file(fr, NULL);
+	size_t n = strlen(_data);
+	_data[n - 1] = '\0';
 
 	fclose(fr);
 
 	return _data;
+}
+
+int writeTextAll(char _filename[_MAX_PATH], const char* text)
+{
+	FILE* fw = NULL;
+	fopen_s(&fw, _filename, "w");
+	if (!fw)
+	{
+		return 0;
+	}
+	fwrite(text, sizeof(char), strlen(text), fw);
+	fclose(fw);
+	return 1;
 }
 
 SRTReadLine_t* SRTReadLine_init(SRTReadLine_t* self)
@@ -404,6 +420,36 @@ int h_getcwd(char dst[_MAX_PATH])
 		strcpy_s(dst, _MAX_PATH, buffer);
 		free(buffer);
 		return 1;
+	}
+}
+
+int isFile(const char* _filename)
+{
+	FILE* fr = NULL;
+	fopen_s(&fr, _filename, "r");
+	if (fr)
+	{
+		fclose(fr);
+		return 1;
+	}
+	else 
+	{
+		return 0;
+	}
+}
+
+int makeFile(const char* _filename)
+{
+	FILE* fw = NULL;
+	fopen_s(&fw, _filename, "w");
+	if (fw)
+	{
+		fclose(fw);
+		return 1;
+	}
+	else
+	{
+		return 0;
 	}
 }
 

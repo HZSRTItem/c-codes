@@ -87,7 +87,6 @@ void SRTCharList_free(SRTCharList_t* self)
 	self->data = NULL;
 }
 
-
 SRTStringList_t* SRTStringList_init(SRTStringList_t* self)
 {
 	if (!self)

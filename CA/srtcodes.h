@@ -89,6 +89,7 @@ char* strtrim(char* _str_strim);
 int isspaceString(char* _str);
 int getFileSize(char _filename[_MAX_PATH]);
 char* readTextAll(char _filename[_MAX_PATH]);
+int writeTextAll(char _filename[_MAX_PATH], const char* text);
 void h_getcurrenttime(struct tm* ct);
 char* getchars_file(FILE* fr, int (*endread)(char* _str));
 size_t string_replace(char* _str, char _src_ch, char _dst_ch);
@@ -96,7 +97,8 @@ int isspaceChar(char ch);
 int copyFile(char _dst_filename[_MAX_PATH], char _src_filename[_MAX_PATH]);
 void getfilename(char _dst_filename[_MAX_PATH], char _src_filename[_MAX_PATH]);
 int h_getcwd(char dst[_MAX_PATH]); // get current path into dst
-
+int isFile(const char* _filename);
+int makeFile(const char* _filename);
 
 SRTReadLine_t* SRTReadLine_init(SRTReadLine_t* self);
 SRTReadLine_t* SRTReadLine_open(SRTReadLine_t* self, char _filename[_MAX_PATH]);
