@@ -6,7 +6,6 @@
 #include <direct.h>
 #include <ctype.h>
 #include <math.h>
-#include <dire>
 
 #include "srtcodes.h"
 

@@ -85,7 +85,12 @@ void SRTRecordList_free(SRTRecordList_t* self)
 {
 	for (size_t i = 0; i < self->count; i++)
 	{
-		
+		SRTRecord_t* record = SRTRecordList_get(self, i);
+		SRTRecord_free(record);
 	}
+	self->_list.free(&(self->_list));
+	self->count = 0;
 }
+
+
 
